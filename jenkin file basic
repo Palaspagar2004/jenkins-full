@@ -1,0 +1,26 @@
+pipeline{
+    agent any;
+    stages{
+        stage("pull from github"){
+            steps{
+                git url: "https://github.com/ujer23/two-tier-flask-app",  branch: "master"
+            }
+        }
+        stage("build"){
+            steps{
+                sh "docker build -t my-app ."
+            }
+        }
+        stage("test"){
+            steps{
+                echo "test done"
+            }
+        }
+        stage("deploy"){
+            steps{
+                sh "docker compose up -d --build  flask-app"
+            }
+        }
+        
+    }
+}
