@@ -8,7 +8,7 @@ pipeline{
         }
         stage("build"){
             steps{
-                sh "docker build -t my-app ."
+                sh "docker build -t cloud Blitzz ."
             }
         }
         stage("test"){
